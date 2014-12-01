@@ -13,7 +13,11 @@ Meteor.methods({
     });
   },
   'removePostData' : function(selectedPost){
-    PostsList.remove(selectedPost);
+    var currentUserId = Meteor.userId();
+    var selectedPostCreator = PostsList.findOne(selectedPost).createdBy;
+    if (selectedPostCreator === currentUserId) {
+      PostsList.remove(selectedPost);
+    }
   },
   'modifyPostScore' : function(selectedPost, scoreValue){
     PostsList.update(selectedPost, {$inc: {score: scoreValue} });
