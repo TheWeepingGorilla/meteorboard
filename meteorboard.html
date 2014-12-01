@@ -10,7 +10,7 @@
 <template name="meteorboard">
   <ul>
     {{#each post}}
-      <li class="post {{selectedClass}}">{{name}} : {{content}} : {{score}} : {{createdBy}}</li>
+      <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}}</h5></li>
     {{/each}}
     {{#if showSelectedPost}}
       <br>
