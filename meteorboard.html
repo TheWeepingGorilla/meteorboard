@@ -1,34 +1,35 @@
 <head>
-    <title>Leaderboard</title>
+    <title>Meteorboard</title>
 </head>
 <body>
-    <h1>Leaderboard</h1>
+    <h1>Meteorboard</h1>
     {{> loginButtons}}
-    {{> leaderboard}}
+    {{> meteorboard}}
 </body>
 
-<template name="leaderboard">
+<template name="meteorboard">
   <ul>
-    {{#each player}}
-      <li class="player {{selectedClass}}">{{name}} : {{score}}</li>
+    {{#each post}}
+      <li class="post {{selectedClass}}">{{name}} : {{content}} : {{score}} : {{createdBy}}</li>
     {{/each}}
-    {{#if showSelectedPlayer}}
+    {{#if showSelectedPost}}
       <br>
-      <li>Selected Player: {{showSelectedPlayer.name}}</li>
-      <input type="button" class="increment" value="Give 5 points">
-      <input type="button" class="decrement" value="Take 5 points">
-      <input type="button" class="remove" value="Remove Player">
+      <li>Selected Post: {{showSelectedPost.name}}</li>
+      <input type="button" class="increment" value="Give 1 point">
+      <input type="button" class="decrement" value="Take 1 point">
+      <input type="button" class="remove" value="Remove Post">
     {{/if}}
   </ul>
-  {{> addPlayerForm}}
+  {{> addPostForm}}
 
 </template>
 
-<template name="addPlayerForm">
+<template name="addPostForm">
   {{#if currentUser}}
     <form>
-      <input type="text" name="playerName">
-      <input type="submit" value="Add Player">
+      <input type="text" name="postName">
+      <input type="text" name="postContent">
+      <input type="submit" value="Add Post">
     </form>
   {{/if}}
 </template>

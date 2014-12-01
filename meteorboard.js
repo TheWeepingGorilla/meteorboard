@@ -1,1 +1,1 @@
-PlayersList = new Mongo.Collection('players');
+PostsList = new Mongo.Collection('posts');
