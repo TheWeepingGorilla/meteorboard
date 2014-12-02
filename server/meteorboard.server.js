@@ -15,7 +15,7 @@ Meteor.methods({
   'removePostData' : function(selectedPost){
     var currentUserId = Meteor.userId();
     var selectedPostCreator = PostsList.findOne(selectedPost).createdBy;
-    if (selectedPostCreator === currentUserId) {
+    if ( (selectedPostCreator === currentUserId) && (author_can_delete) ) {
       PostsList.remove(selectedPost);
     }
   },
