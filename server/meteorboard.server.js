@@ -9,7 +9,8 @@ Meteor.methods({
       name: postNameVar,
       content: postContentVar,
       score: 0,
-      createdBy: currentUserId
+      createdBy: currentUserId,
+      votes: []
     });
   },
   'removePostData' : function(selectedPost){
@@ -19,10 +20,12 @@ Meteor.methods({
       PostsList.remove(selectedPost);
     }
   },
-  'modifyPostScore' : function(selectedPost, scoreValue){
+  'modifyPostScore' : function(selectedPost, scoreValue) {
     var currentUserId = Meteor.userId();
-    PostsList.update(selectedPost, {$inc: {score: scoreValue} });
-    PostsList.update(selectedPost, {$set: {upvotes: [currentUserId]} });
-    console.log(PostsList.findOne(selectedPost).upvotes);
+    var postToModify = PostsList.findOne(selectedPost);
+    if ( (postToModify.votes.indexOf(currentUserId) === -1) && (postToModify.createdBy !== currentUserId) ) {
+      PostsList.update(selectedPost, {$inc: {score: scoreValue} });
+      PostsList.update(selectedPost, {$set: {votes: [currentUserId]} });
+    }
   }
 });
