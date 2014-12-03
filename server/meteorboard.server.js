@@ -20,6 +20,9 @@ Meteor.methods({
     }
   },
   'modifyPostScore' : function(selectedPost, scoreValue){
+    var currentUserId = Meteor.userId();
     PostsList.update(selectedPost, {$inc: {score: scoreValue} });
+    PostsList.update(selectedPost, {$set: {upvotes: [currentUserId]} });
+    console.log(PostsList.findOne(selectedPost).upvotes);
   }
 });

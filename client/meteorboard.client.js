@@ -1,8 +1,9 @@
 Meteor.subscribe('thePosts');
+
 Template.meteorboard.events({
   'click .post': function() {
-    var playerId = this._id;
-    Session.set('selectedPost', playerId);
+    var postId = this._id;
+    Session.set('selectedPost', postId);
   },
   'click .increment': function() {
     var selectedPost = Session.get('selectedPost');
@@ -17,6 +18,7 @@ Template.meteorboard.events({
     Meteor.call('removePostData', selectedPost);
   }
 });
+
 Template.meteorboard.helpers({
   'post' : function(){
     var currentUserId = Meteor.userId();
@@ -37,6 +39,7 @@ Template.meteorboard.helpers({
     return PostsList.findOne(selectedPost);
   }
 });
+
 Template.addPostForm.events({
   'submit form' : function(event) {
     event.preventDefault();
