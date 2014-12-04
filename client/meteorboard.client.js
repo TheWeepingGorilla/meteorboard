@@ -38,6 +38,7 @@ Template.meteorboard.helpers({
     var selectedPost = Session.get('selectedPost');
     return PostsList.findOne(selectedPost);
   }
+
 });
 
 Template.addPostForm.events({

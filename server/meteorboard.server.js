@@ -35,10 +35,14 @@ function permitted(userId, selectedPost, action) {
       return (selectedPostCreator === userId) && (author_can_delete);
     case "vote_on_post" :
       return (postToModify.votes.indexOf(userId) === -1) && (postToModify.createdBy !== userId) && (userId !== null);
+    case "edit post" :
+      return (postToModify.createdBy === userId);
     default :
       return false;
   }
 };
+
+
 
 
 

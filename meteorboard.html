@@ -12,14 +12,13 @@
   <ul>
     {{#each post}}
       <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}}</h5></li>
+      {{#if selectedClass}}
+        <br>
+        <input type="button" class="increment btn btn-link" value="Give 1 point">
+        <input type="button" class="decrement btn btn-link" value="Take 1 point">
+        <input type="button" class="remove btn btn-link" value="Remove Post">
+      {{/if}}
     {{/each}}
-    {{#if showSelectedPost}}
-      <br>
-      <li>Selected Post: {{showSelectedPost.name}}</li>
-      <input type="button" class="increment" value="Give 1 point">
-      <input type="button" class="decrement" value="Take 1 point">
-      <input type="button" class="remove" value="Remove Post">
-    {{/if}}
   </ul>
   {{> addPostForm}}
 
