@@ -31,14 +31,23 @@ Template.meteorboard.helpers({
       return "selected"
     }
   },
-  'howMany' : function() {
-    return PostsList.find().count()
-  },
   'showSelectedPost' : function() {
     var selectedPost = Session.get('selectedPost');
     return PostsList.findOne(selectedPost);
+  },
+  'canVote' : function() {
+    var currentUserId = Meteor.userId();
+    var selectedPost = Session.get('selectedPost');
+    var postToModify = PostsList.findOne(selectedPost);
+    var selectedPostCreator = PostsList.findOne(selectedPost).createdBy;
+    return ( (postToModify.votes.indexOf(currentUserId) === -1) && (postToModify.createdBy !== currentUserId) && (currentUserId !== null) );
+  },
+  'canDelete' : function() {
+    var currentUserId = Meteor.userId();
+    var selectedPost = Session.get('selectedPost');
+    var selectedPostCreator = PostsList.findOne(selectedPost).createdBy;
+    return (selectedPostCreator === currentUserId) && (author_can_delete);
   }
-
 });
 
 Template.addPostForm.events({

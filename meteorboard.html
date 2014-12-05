@@ -14,9 +14,10 @@
       <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}}</h5></li>
       {{#if selectedClass}}
         <br>
-        <input type="button" class="increment btn btn-link" value="Give 1 point">
-        <input type="button" class="decrement btn btn-link" value="Take 1 point">
-        <input type="button" class="remove btn btn-link" value="Remove Post">
+        <input type="button" class="comment btn btn-link" value="Comment on this">
+        {{#if canVote}}<input type="button" class="increment btn btn-link" value="+1">{{/if}}
+        {{#if canVote}}<input type="button" class="decrement btn btn-link" value="-1">{{/if}}
+        {{#if canDelete}}<input type="button" class="remove btn btn-link" value="Delete">{{/if}}
       {{/if}}
     {{/each}}
   </ul>
@@ -29,7 +30,7 @@
     <form>
       <input type="text" name="postName">
       <input type="textarea" class="textArea" name="postContent">
-      <input type="submit" value="Add Post">
+      <input type="submit" value="New Post">
     </form>
   {{/if}}
 </template>
