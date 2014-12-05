@@ -2,16 +2,6 @@ Meteor.publish('thePosts', function(){
   var currentUserId = this.userId;
   return PostsList.find()
 });
-Meteor.publish("userData", function () {
-  if (this.userId) {
-    Meteor.users.update({_id: this.userId}, {$set: {permissions: ["test", "test2"]} });
-    return Meteor.users.find({_id: this.userId},
-                             {fields: {'permissions': 1} });
-  } else {
-    this.ready();
-  }
-});
-
 
 Meteor.methods({
   'insertPostData' : function(postNameVar, postContentVar) {
@@ -21,7 +11,7 @@ Meteor.methods({
       content: postContentVar,
       score: 0,
       createdBy: currentUserId,
-      votes: [],
+      votes: []
     });
   },
   'removePostData' : function(selectedPost) {
@@ -52,8 +42,6 @@ function permitted(userId, selectedPost, action) {
       return false;
   }
 };
-
-
 
 
 

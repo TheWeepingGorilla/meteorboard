@@ -1,5 +1,4 @@
 Meteor.subscribe('thePosts');
-Meteor.subscribe("userData");
 
 Template.meteorboard.events({
   'click .post': function() {
