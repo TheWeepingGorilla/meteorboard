@@ -16,7 +16,21 @@ Template.meteorboard.events({
   'click .remove' : function() {
     var selectedPost = Session.get('selectedPost');
     Meteor.call('removePostData', selectedPost);
+  },
+  'click .newPost' : function() {
+    var newPostFormShowState = Session.get('showNewPostForm');
+    newPostFormShowState = !newPostFormShowState;
+    Session.set('showNewPostForm', newPostFormShowState);
+    console.log(Session.get('showNewPostForm'));
+
+  },
+  'submit form' : function(event) {
+    event.preventDefault();
+    var postNameVar = event.target.postName.value;
+    var postContentVar = event.target.postContent.value;
+    Meteor.call('insertPostData', postNameVar, postContentVar);
   }
+
 });
 
 Template.meteorboard.helpers({
@@ -47,14 +61,13 @@ Template.meteorboard.helpers({
     var selectedPost = Session.get('selectedPost');
     var selectedPostCreator = PostsList.findOne(selectedPost).createdBy;
     return (selectedPostCreator === currentUserId) && (author_can_delete);
+  },
+  'showNewPostForm' : function() {
+    return Session.get('showNewPostForm');
   }
 });
 
-Template.addPostForm.events({
-  'submit form' : function(event) {
-    event.preventDefault();
-    var postNameVar = event.target.postName.value;
-    var postContentVar = event.target.postContent.value;
-    Meteor.call('insertPostData', postNameVar, postContentVar);
-  }
-});
+
+
+
+

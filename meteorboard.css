@@ -2,7 +2,12 @@
   background-color: yellow;
 }
 
-.textArea{
-  width: 75%;
+.postName{
+  width: 50%;
+  height: 50%;
+}
+
+.postContent{
+  width: 50%;
   height: 50%;
 }
