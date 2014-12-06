@@ -11,6 +11,13 @@
 <template name="meteorboard">
   <br><br>
   <input type="button" class="newPost btn btn-small" value="New Post">
+  {{#if showNewPostForm}}
+    <form>
+      <input type="textarea" class="postName" name="postName">
+      <input type="textarea" class="postContent" name="postContent">
+      <input type="submit" value="New Post">
+    </form>
+  {{/if}}
   <ul>
     {{#each post}}
       <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}}</h5></li>
@@ -23,13 +30,6 @@
       {{/if}}
     {{/each}}
   </ul>
-  {{#if showNewPostForm}}
-    <form>
-      <input type="textarea" class="postName" name="postName">
-      <input type="textarea" class="postContent" name="postContent">
-      <input type="submit" value="New Post">
-    </form>
-  {{/if}}
 </template>
 
 
