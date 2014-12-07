@@ -17,12 +17,15 @@ Template.meteorboard.events({
     var selectedPost = Session.get('selectedPost');
     Meteor.call('removePostData', selectedPost);
   },
+  'click .comment' : function() {
+    var selectedPost = Session.get('selectedPost');
+    Meteor.call('comment', selectedPost);
+  },
   'click .newPost' : function() {
     var newPostFormShowState = Session.get('showNewPostForm');
     newPostFormShowState = !newPostFormShowState;
     Session.set('showNewPostForm', newPostFormShowState);
     console.log(Session.get('showNewPostForm'));
-
   },
   'submit form' : function(event) {
     event.preventDefault();
