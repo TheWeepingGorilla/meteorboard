@@ -4,14 +4,15 @@ Meteor.publish('thePosts', function(){
 });
 
 Meteor.methods({
-  'insertPostData' : function(postNameVar, postContentVar) {
+  'insertPostData' : function(postNameVar, postContentVar, parentPostId) {
     var currentUserId = Meteor.userId();
     PostsList.insert({
       name: postNameVar,
       content: postContentVar,
       score: 0,
       createdBy: currentUserId,
-      votes: []
+      votes: [],
+      parentOf: parentPostId
     });
   },
   'removePostData' : function(selectedPost) {

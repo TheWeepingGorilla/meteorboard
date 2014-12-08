@@ -25,13 +25,13 @@ Template.meteorboard.events({
     var newPostFormShowState = Session.get('showNewPostForm');
     newPostFormShowState = !newPostFormShowState;
     Session.set('showNewPostForm', newPostFormShowState);
-    console.log(Session.get('showNewPostForm'));
+    Session.set('parentPostId', -1);
   },
   'submit form' : function(event) {
     event.preventDefault();
     var postNameVar = event.target.postName.value;
     var postContentVar = event.target.postContent.value;
-    Meteor.call('insertPostData', postNameVar, postContentVar);
+    Meteor.call('insertPostData', postNameVar, postContentVar, parentPostId);
   }
 
 });
