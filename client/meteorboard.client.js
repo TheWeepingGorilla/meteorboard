@@ -18,14 +18,17 @@ Template.meteorboard.events({
     Meteor.call('removePostData', selectedPost);
   },
   'click .comment' : function() {
+    var newCommentFormShowState = Session.get('showNewCommentForm');
+    newCommentFormShowState = !newCommentFormShowState;
+    Session.set('showNewCommentForm', newCommentFormShowState);
     var selectedPost = Session.get('selectedPost');
-    Meteor.call('comment', selectedPost);
+    Session.set('parentPostId', selectedPost);
   },
   'click .newPost' : function() {
     var newPostFormShowState = Session.get('showNewPostForm');
     newPostFormShowState = !newPostFormShowState;
     Session.set('showNewPostForm', newPostFormShowState);
-    Session.set('parentPostId', -1);
+    Session.set('parentPostId', 'root');
   },
   'submit form' : function(event) {
     event.preventDefault();
