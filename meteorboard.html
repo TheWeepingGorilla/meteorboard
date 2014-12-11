@@ -37,17 +37,17 @@
         {{#if canVote}}<input type="button" class="increment btn btn-link" value="+1">{{/if}}
         {{#if canVote}}<input type="button" class="decrement btn btn-link" value="-1">{{/if}}
         {{#if canDelete}}<input type="button" class="remove btn btn-link" value="Delete">{{/if}}
-      {{/if}}
-      {{#if showNewCommentForm}}
-        <br>
-        <form role="form">
-        <div class="form-group">
-          <label for="commentContent">Comment Content</label>
-          <textarea class="form-control commentContent" rows="3" name="commentContent" id="commentContent"></textarea>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-small">Submit</button>
-        </form>
+        {{#if showNewCommentForm}}
+          <br>
+          <form role="form">
+          <div class="form-group">
+            <label for="commentContent">Comment</label>
+            <textarea class="form-control commentContent" rows="3" name="commentContent" id="commentContent"></textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-small">Submit</button>
+          </form>
+        {{/if}}
       {{/if}}
     {{/each}}
   </ul>

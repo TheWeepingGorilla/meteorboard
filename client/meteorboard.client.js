@@ -70,6 +70,9 @@ Template.meteorboard.helpers({
   },
   'showNewPostForm' : function() {
     return Session.get('showNewPostForm');
+  },
+  'showNewCommentForm' : function() {
+    return Session.get('showNewCommentForm');
   }
 });
 
