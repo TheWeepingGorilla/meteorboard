@@ -30,7 +30,7 @@
   {{/if}}
   <ul>
     {{#each post}}
-      <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}}</h5></li>
+      <li class="post {{selectedClass}}"><h3>{{name}}</h3><p>{{content}}</p><h5>Score: {{score}} {{parentPostId}}</h5></li>
       {{#if selectedClass}}
         <br>
         <input type="button" class="comment btn btn-link" value="Comment on this">

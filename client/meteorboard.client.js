@@ -24,6 +24,7 @@ Template.meteorboard.events({
     var selectedPost = Session.get('selectedPost');
     Session.set('parentPostId', selectedPost);
   },
+
   'click .newPost' : function() {
     var newPostFormShowState = Session.get('showNewPostForm');
     newPostFormShowState = !newPostFormShowState;
@@ -34,6 +35,7 @@ Template.meteorboard.events({
     event.preventDefault();
     var postNameVar = event.target.postName.value;
     var postContentVar = event.target.postContent.value;
+    var parentPostId = Session.get('parentPostId');
     Meteor.call('insertPostData', postNameVar, postContentVar, parentPostId);
   }
 
