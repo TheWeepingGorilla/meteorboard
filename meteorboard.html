@@ -40,10 +40,7 @@
         {{#if showNewCommentForm}}
           <br>
           <form role="form">
-            <div class="form-group">
-              <label for="postName">Comment Title</label>
-              <input type="textarea" id="postName" class="postName form-control" name="postName">
-            </div>
+            <input type="hidden" name="postName" id="postName" value="Comment">
             <div class="form-group">
               <label for="commentContent">Comment</label>
               <textarea class="form-control postContent" rows="3" name="postContent" id="postContent"></textarea>
