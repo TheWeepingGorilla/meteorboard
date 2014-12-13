@@ -23,9 +23,9 @@
       <div class="form-group">
         <label for="postContent">Post Content</label>
         <textarea class="form-control postContent" rows="3" name="postContent" id="postContent"></textarea>
-       </div>
-      <br>
-      <button type="submit" class="btn btn-small">Submit</button>
+      </div>
+        <br>
+        <button type="submit" class="btn btn-small">Submit</button>
     </form>
   {{/if}}
   <ul>
@@ -40,12 +40,16 @@
         {{#if showNewCommentForm}}
           <br>
           <form role="form">
-          <div class="form-group">
-            <label for="commentContent">Comment</label>
-            <textarea class="form-control commentContent" rows="3" name="commentContent" id="commentContent"></textarea>
-          </div>
-          <br>
-          <button type="submit" class="btn btn-small">Submit</button>
+            <div class="form-group">
+              <label for="postName">Comment Title</label>
+              <input type="textarea" id="postName" class="postName form-control" name="postName">
+            </div>
+            <div class="form-group">
+              <label for="commentContent">Comment</label>
+              <textarea class="form-control postContent" rows="3" name="postContent" id="postContent"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-small">Submit</button>
           </form>
         {{/if}}
       {{/if}}
