@@ -24,19 +24,25 @@ Template.meteorboard.events({
     var selectedPost = Session.get('selectedPost');
     Session.set('parentPostId', selectedPost);
   },
-
   'click .newPost' : function() {
     var newPostFormShowState = Session.get('showNewPostForm');
     newPostFormShowState = !newPostFormShowState;
     Session.set('showNewPostForm', newPostFormShowState);
     Session.set('parentPostId', 'root');
   },
-  'submit form' : function(event) {
+  'submit form' : function(event) {  // change to Post form
     event.preventDefault();
     var postNameVar = event.target.postName.value;
     var postContentVar = event.target.postContent.value;
     var parentPostId = Session.get('parentPostId');
     Meteor.call('insertPostData', postNameVar, postContentVar, parentPostId);
+  },
+  'submit commentForm' : function(event) {
+    event.preventDefault();
+    var selectedPost = Session.get('selectedPost');
+    var commentContentVar = event.target.commentContent.value;
+    var parentPostId = Session.get('parentPostId');
+    Meteor.call('addComment', selectedPost, commentContentVar, parentPostId);
   }
 
 });

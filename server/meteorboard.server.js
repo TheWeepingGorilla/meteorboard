@@ -28,7 +28,7 @@ Meteor.methods({
       PostsList.update(selectedPost, {$set: {votes: [currentUserId]} });
     }
   },
-  'addComment' : function(commentList, commentContentVar, parentPostId) {
+  'addComment' : function(selectedPost, commentContentVar, parentPostId) {
     // insert permission here
     var currentUserId = Meteor.userId();
     commentList.insert({
