@@ -44,7 +44,6 @@ Template.meteorboard.events({
     var parentPostId = Session.get('parentPostId');
     Meteor.call('addComment', selectedPost, commentContentVar, parentPostId);
   }
-
 });
 
 Template.meteorboard.helpers({
@@ -83,8 +82,3 @@ Template.meteorboard.helpers({
     return Session.get('showNewCommentForm');
   }
 });
-
-
-
-
-
