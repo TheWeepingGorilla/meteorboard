@@ -1,6 +1,5 @@
 Meteor.publish('thePosts', function(){
   var currentUserId = this.userId;
-
   return PostsList.find()
 });
 
@@ -13,7 +12,7 @@ Meteor.methods({
       score: 0,
       createdBy: currentUserId,
       votes: [],
-      parentOf: parentPostId,
+      childOf: parentPostId,
       comments: []
     });
   },
@@ -29,10 +28,17 @@ Meteor.methods({
       PostsList.update(selectedPost, {$set: {votes: [currentUserId]} });
     }
   },
-  'addComment' : function(selectedPost, commentContent) {
+  'addComment' : function(commentList, commentContentVar, parentPostId) {
+    // insert permission here
     var currentUserId = Meteor.userId();
-    // add permission statement here
-    PostsList.update(selectedPost, {$set: {comments: [curentUserId, commentContent]} });
+    commentList.insert({
+      content: commentContentVar,
+      score: 0,
+      createdBy: currentUserId,
+      votes: [],
+      childOf: parentPostId,
+      comments: []
+    });
   }
 });
 
